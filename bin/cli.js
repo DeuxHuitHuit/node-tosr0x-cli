@@ -40,7 +40,7 @@ var create = function () {
 		return Tosr0x.fromPortScan(options);
 	} else {
 		return new Promise(function (res) {
-			return new Tosr0x(argv.p, options);
+			res(new Tosr0x(argv.p, options));
 		});
 	}
 };
