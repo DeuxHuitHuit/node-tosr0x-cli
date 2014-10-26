@@ -4,7 +4,7 @@
 
 var pkg = require('../package.json');
 var Promise = require('rsvp').Promise;
-var CMDS = ['on', 'off', 'state', 'toggle', 'temp', 'voltage'];
+var CMDS = ['on', 'off', 'state', 'toggle', 'temp', 'version', 'voltage'];
 
 var _ = require('lodash');
 
@@ -31,6 +31,12 @@ var cmd = argv._[0];
 var ctl;
 
 process.title = 'Tosr0x';
+
+if (cmd === 'temp') {
+	cmd = 'temperature';
+} else if (cmd === 'state') {
+	cmd = 'refreshStates';
+}
 
 var create = function () {
 	var options = {
