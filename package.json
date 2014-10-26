@@ -1,0 +1,43 @@
+{
+  "name": "tosr0x-cli",
+  "version": "0.1.0",
+  "description": "A CLI tool to control the Tosr0x board",
+  "homepage": "https://github.com/DeuxHuitHuit/node-tosr0x-cli",
+  "author": {
+    "name": "Deux Huit Huit",
+    "url": "https://deuxhuithuit.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/DeuxHuitHuit/node-tosr0x-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DeuxHuitHuit/node-tosr0x-cli/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://deuxhuithuit.mit-license.org/"
+    }
+  ],
+  "bin": {
+    "tosr0x": "bin/cli.js"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "2.0.x"
+  },
+  "keywords": [
+    "tosr0x",
+    "serial",
+    "usb",
+    "cli"
+  ],
+  "preferGlobal": true,
+  "dependencies": {
+    "lodash": "^2.4.1",
+    "rsvp": "^3.0.14",
+    "tosr0x": "^0.1.0",
+    "yargs": "^1.3.2"
+  }
+}
