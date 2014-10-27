@@ -4,7 +4,7 @@
 
 var pkg = require('../package.json');
 var Promise = require('rsvp').Promise;
-var CMDS = ['on', 'off', 'state', 'toggle', 'temp', 'version', 'voltage'];
+var CMDS = ['on', 'off', 'state', 'temp', 'version', 'voltage'];
 
 var _ = require('lodash');
 
@@ -40,10 +40,11 @@ if (cmd === 'temp') {
 
 var create = function () {
 	var options = {
-		debug: argv.v
+		debug: argv.v,
+		relayCount: argv.n
 	};
 	if (!argv.p) {
-		return Tosr0x.fromPortScan(options);
+		return Tosr0x.fromPortScan(); // TODO: put options when available
 	} else {
 		return new Promise(function (res) {
 			res(new Tosr0x(argv.p, options));
@@ -53,7 +54,9 @@ var create = function () {
 
 var run = function (c) {
 	ctl = c;
-	return ctl[cmd]();
+	return ctl.open().then(function () {
+		return ctl[cmd](parseInt(argv._[1], 10) || 0);
+	});
 };
 
 var display = function (res) {
