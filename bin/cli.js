@@ -10,8 +10,10 @@ var _ = require('lodash');
 
 var yargs = require('yargs');
 var argv = yargs
-	.usage('Usage: $0 cmd [relay] [opts]')
 	.demand(1)
+	.usage('Usage: $0 cmd [relay] [opts]')
+	.help('h')
+	.alias('h', ['?', 'help'])
 	.version(pkg.version + '\n', 'version')
 	.showHelpOnFail(true, 'Valid commands are: ' + CMDS.join(', '))
 	.describe('p', 'The usb port uri to use. Leave empty to use port scan')
