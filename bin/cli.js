@@ -23,6 +23,7 @@ var argv = yargs
 	.defaults('n', 2)
 	.boolean('v')
 	.describe('v', 'Enables verbose mode (for debug only)')
+	.alias('v', 'verbose')
 	.check(function (argv, opts) {
 		return _.contains(CMDS, argv._[0]);
 	})
