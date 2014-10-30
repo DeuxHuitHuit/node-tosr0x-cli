@@ -41,29 +41,23 @@ if (cmd === 'temp') {
 	cmd = 'refreshStates';
 }
 
-var create = function () {
-	var options = {
-		debug: argv.v,
-		relayCount: argv.n
-	};
-	if (!argv.p) {
-		return Tosr0x.fromPortScan(); // TODO: put options when available
-	} else {
-		return new Promise(function (res) {
-			res(new Tosr0x(argv.p, options));
-		});
-	}
-};
-
 var run = function (c) {
 	ctl = c;
 	return ctl.open().then(function () {
-		return ctl[cmd](parseInt(argv._[1], 10) || 0);
+		return ctl[cmd](argv._[1]);
 	});
 };
 
 var display = function (res) {
-	console.log(res);
+	if (_.isObject(res)) {
+		_.forOwn(res, function (val, key) {
+			if (key !== 'ctl') {
+				console.log(val);
+			}
+		});
+	} else {
+		console.log(res);
+	}
 	console.log('Done.');
 };
 
@@ -77,8 +71,11 @@ var close = function () {
 	}
 };
 
-create()
-	.then(run)
-	.then(display)
-	.catch(error)
-	.finally(close);
+Tosr0x.create(argv.p, {
+	debug: argv.v,
+	relayCount: argv.n
+})
+.then(run)
+.then(display)
+.catch(error)
+.finally(close);
