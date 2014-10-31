@@ -5,9 +5,8 @@
 var pkg = require('../package.json');
 var Promise = require('rsvp').Promise;
 var CMDS = ['on', 'off', 'state', 'temp', 'version', 'voltage'];
-
+var exitCode = 0;
 var _ = require('lodash');
-
 var yargs = require('yargs');
 var argv = yargs
 	.demand(1)
@@ -63,12 +62,14 @@ var display = function (res) {
 
 var error = function (err) {
 	console.error(err);
+	exitCode = 1;
 };
 
 var close = function () {
 	if (!!ctl) {
 		ctl.closeImmediate();
 	}
+	process.exit(exitCode);
 };
 
 Tosr0x.create(argv.p, {
