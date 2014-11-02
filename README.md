@@ -35,6 +35,8 @@ Options:
   -p, --port        The usb port uri to use. Leave empty to use port scan
   -n, --relayCount  The number of relays on the board                      [default: 2]
   -v, --verbose     Enables verbose mode (for debug only)                
+
+Valid commands (cmd) are: on, off, state, temp, version, voltage
 ```
 
 ## Credits
