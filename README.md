@@ -21,13 +21,13 @@ npm i tosr0x-cli -g
 Start the program usign the global script
 
 ```
-tors0x
+tosr0x
 ```
 
 Valid command-line options are
 
 ```
-Usage: tors0x cmd [relay] [opts]
+Usage: tosr0x cmd [relay] [opts]
 
 Options:
   -h, -?, --help    Show help                                            
